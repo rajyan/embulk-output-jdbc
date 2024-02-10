@@ -21,7 +21,7 @@ public class PostgreSQLTests
 {
     public static ConfigSource baseConfig()
     {
-        return EmbulkTests.config("EMBULK_OUTPUT_REDSHIFT_TEST_CONFIG");
+        return EmbulkTests.config("EMBULK_OUTPUT_TEST_CONFIG");
     }
 
     public static void execute(String sql)

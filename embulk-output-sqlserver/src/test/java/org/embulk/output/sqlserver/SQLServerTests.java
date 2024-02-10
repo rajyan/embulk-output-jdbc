@@ -24,7 +24,7 @@ public class SQLServerTests
 {
     public static ConfigSource baseConfig()
     {
-        return EmbulkTests.config("EMBULK_OUTPUT_SQLSERVER_TEST_CONFIG");
+        return EmbulkTests.config("EMBULK_OUTPUT_TEST_CONFIG");
     }
 
     public static Connection connect() throws SQLException

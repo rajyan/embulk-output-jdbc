@@ -45,4 +45,4 @@ services:
     network_mode: service:sqlserver
     command: bash -c 'until /opt/mssql-tools/bin/sqlcmd -U sa -P Password12! -Q "CREATE DATABASE ci_test"; do echo retry && sleep 1; done'
     depends_on:
-      - db
+      - sqlserver
