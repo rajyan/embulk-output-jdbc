@@ -61,11 +61,6 @@ public class JdbcOutputConnection
         }
     }
 
-    public String getDatabaseName() throws SQLException
-    {
-        return connection.getCatalog();
-    }
-
     public String getSchemaName()
     {
         return schemaName;
