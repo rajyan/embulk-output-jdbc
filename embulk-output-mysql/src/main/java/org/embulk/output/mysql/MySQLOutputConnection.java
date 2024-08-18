@@ -16,10 +16,10 @@ import org.embulk.output.jdbc.TableIdentifier;
 public class MySQLOutputConnection
         extends JdbcOutputConnection
 {
-    public MySQLOutputConnection(Connection connection)
+    public MySQLOutputConnection(Connection connection, String schemaName)
             throws SQLException
     {
-        super(connection, null);
+        super(connection, schemaName);
     }
 
     @Override

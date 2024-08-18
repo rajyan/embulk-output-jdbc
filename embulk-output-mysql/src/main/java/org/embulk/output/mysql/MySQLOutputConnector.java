@@ -29,7 +29,7 @@ public class MySQLOutputConnector
     {
         Connection c = DriverManager.getConnection(url, properties);
         try {
-            MySQLOutputConnection con = new MySQLOutputConnection(c);
+            MySQLOutputConnection con = new MySQLOutputConnection(c, c.getCatalog());
             c = null;
             return con;
         } finally {
