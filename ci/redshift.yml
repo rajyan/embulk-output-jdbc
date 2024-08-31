@@ -4,4 +4,9 @@ port: 5439
 database: ci_test
 user: postgres
 password: postgres
+s3_bucket: ci-test-bucket
+auth_method:
+  type: basic
+  access_key_id: test
+  secret_access_key: test
 fetch_rows: 1000

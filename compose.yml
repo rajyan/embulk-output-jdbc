@@ -1,0 +1,48 @@
+services:
+  mysql:
+    image: mysql:5.7
+    platform: linux/amd64
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "127.0.0.1:3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: ci_test
+  postgresql: &postgresql
+    image: postgres:13
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "127.0.0.1:5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: ci_test
+  redshift:
+    <<: *postgresql
+    command: ["-p", "5439"]
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    healthcheck:
+      test: ["CMD", "sqlcmd", "-Q", "select 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "127.0.0.1:1433:1433"
+    environment:
+        ACCEPT_EULA: "Y"
+        SA_PASSWORD: "Password12!"
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    network_mode: service:sqlserver
+    command: bash -c 'until /opt/mssql-tools/bin/sqlcmd -U sa -P Password12! -Q "CREATE DATABASE ci_test"; do echo retry && sleep 1; done'
+    depends_on:
+      - sqlserver

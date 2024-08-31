@@ -17,7 +17,7 @@ public class MySQLTests
 {
     public static ConfigSource baseConfig()
     {
-        return EmbulkTests.config("EMBULK_OUTPUT_MYSQL_TEST_CONFIG");
+        return EmbulkTests.config("EMBULK_OUTPUT_TEST_CONFIG");
     }
 
     public static Connection connect() throws SQLException

@@ -1,0 +1,6 @@
+type: sqlserver
+host: 127.0.0.1
+port: 1433
+database: ci_test
+user: SQ
+password: Password12!

@@ -24,6 +24,12 @@ dependencies {
     implementation "joda-time:joda-time:2.9.2"
 
     testImplementation project(':embulk-output-jdbc').sourceSets.test.output
+
+    testImplementation "org.postgresql:postgresql:9.4-1205-jdbc41"
+    testImplementation "org.embulk:embulk-formatter-csv:0.10.42"
+    testImplementation "org.embulk:embulk-input-file:0.10.42"
+    testImplementation "org.embulk:embulk-output-file:0.10.42"
+    testImplementation "org.embulk:embulk-parser-csv:0.10.42"
 }
 
 embulkPlugin {
